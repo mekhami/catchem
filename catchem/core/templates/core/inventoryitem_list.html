@@ -1,8 +1,36 @@
 {% extends 'core/base.html' %}
 {% block content %}
-    {% for item in object_list %}
-        <p>{{ item }}</p>
-    {% empty %}
-        <p>No Inventory Yet</p>
-    {% endfor %}
+    <table id="inventory" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Package</th>
+                <th>Quantity</th>
+                <th>Min Quantity</th>
+                <th>Supplier</th>
+                <th>Warehouse</th>
+                <th>Customer</th>
+                <th>Price</th>
+            </tr>
+            <tbody>
+            {% for item in object_list %}
+                <tr>
+                    <td>{{ item.package }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.min_quantity }}</td>
+                    <td>{{ item.supplier }}</td>
+                    <td>{{ item.warehouse }}</td>
+                    <td>{{ item.customer }}</td>
+                    <td>{{ item.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block extrajs %}
+    <script src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#inventory').DataTable();
+        });
+    </script>
 {% endblock %}
