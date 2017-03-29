@@ -14,7 +14,7 @@
             <tbody>
             {% for item in object_list %}
                 <tr>
-                    <td>{{ item.package }}</td>
+                    <td><a href="{% url 'core:detail' item.id %}">{{ item.package }}</a></td>
                     <td>{{ item.quantity }}</td>
                     <td>{{ item.min_quantity }}</td>
                     <td>{{ item.supplier }}</td>
